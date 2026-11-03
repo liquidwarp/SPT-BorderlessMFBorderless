@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <ModDir>BepInEx\plugins</ModDir>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp" HintPath="$(SPTPath)\EscapeFromTarkov_Data\Managed\Assembly-CSharp.dll" Private="false" />
+        <Reference Include="BepInEx" HintPath="$(SPTPath)\BepInEx\core\BepInEx.dll" Private="false" />
+        <Reference Include="spt-reflection" HintPath="$(SPTPath)\BepInEx\plugins\spt\spt-reflection.dll" Private="false" />
+        <Reference Include="UnityEngine" HintPath="$(SPTPath)\EscapeFromTarkov_Data\Managed\UnityEngine.dll" Private="false" />
+        <Reference Include="UnityEngine.CoreModule" HintPath="$(SPTPath)\EscapeFromTarkov_Data\Managed\UnityEngine.CoreModule.dll" Private="false" />
+    </ItemGroup>
+    <Target Name="RequireSPTPath" BeforeTargets="ResolveAssemblyReferences">
+        <Error Condition="'$(SPTPath)' == ''" Text="Missing SPT path" />
+    </Target>
+</Project>
